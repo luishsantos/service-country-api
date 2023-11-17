@@ -1,6 +1,6 @@
 #!groovy
 
-buildAgentLabel = "any"
+buildAgentLabel = any
 //jenkins vars
 currentBuild.result = "SUCCESS"
 
