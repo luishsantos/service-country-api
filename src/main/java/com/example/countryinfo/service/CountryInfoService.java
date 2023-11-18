@@ -2,6 +2,7 @@ package com.example.countryinfo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.countryinfo.dto.CountryApiDTO;
 import com.example.countryinfo.dto.CountryDTO;
@@ -28,13 +29,42 @@ public class CountryInfoService {
 
     List<CountryDTO> countryDTOList = parser.toCountryDTOList(countryApiDTOList);
 
-    List<CountryEntity> countryEntityList = mapper.toCountryEntityList(countryDTOList);
+    List<CountryEntity> storedCountries = countryRepository.findAll();
 
-    countryRepository.saveAll(countryEntityList);
+    upsertCountries(countryDTOList, storedCountries);
+
+    countryRepository.saveAll(storedCountries);
+  }
+
+  private void upsertCountries(List<CountryDTO> countryDTOList, List<CountryEntity> storedCountries) {
+    for(CountryDTO countryDTO : countryDTOList) {
+      Optional<CountryEntity> existingCountryOpt = storedCountries.stream()
+          .filter(existingCountry -> existingCountry.getName().equals(countryDTO.getName()))
+          .findFirst();
+
+      if(existingCountryOpt.isPresent()) {
+        // Update existing country
+        CountryEntity existingCountry = existingCountryOpt.get();
+        updateExistingCountry(existingCountry, countryDTO);
+      }
+      else {
+        // Add new country
+        CountryEntity newCountryEntity = mapper.toCountryEntity(countryDTO);
+        storedCountries.add(newCountryEntity);
+      }
+    }
   }
 
   public CountryDTO getCountryByName(String name) {
     return mapper.toCountryDTO(countryRepository.findByName(name));
+  }
+
+  private void updateExistingCountry(CountryEntity existingCountry, CountryDTO countryDTO) {
+    existingCountry.setCapital(countryDTO.getCapital());
+    existingCountry.setOfficialLanguage(countryDTO.getLanguage());
+    existingCountry.setLatitude(countryDTO.getLatitude());
+    existingCountry.setLongitude(countryDTO.getLongitude());
+    existingCountry.setCurrency(countryDTO.getCurrency());
   }
 
 }
