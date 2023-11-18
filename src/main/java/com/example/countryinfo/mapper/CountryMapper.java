@@ -13,10 +13,8 @@ public interface CountryMapper {
   @Mapping(target = "id", ignore = true)
   CountryEntity toCountryEntity(CountryDTO countryDTO);
 
-
   @Mapping(target="language",source ="officialLanguage")
   CountryDTO toCountryDTO(CountryEntity countryEntity);
 
-  List<CountryDTO> toCountryDTOList(List<CountryEntity> countryEntityList);
   List<CountryEntity> toCountryEntityList(List<CountryDTO> countryEntityList);
 }

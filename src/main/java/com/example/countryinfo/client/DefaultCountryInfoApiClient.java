@@ -21,7 +21,6 @@ public class DefaultCountryInfoApiClient implements CountryInfoApiClient{
   @Override
   public List<CountryApiDTO> getAllCountries() {
     String url = BASE_URL + "/api/countries";
-    List<CountryApiDTO> countries;
 
     ResponseEntity<CountryApiDTO[]> response =
         restTemplate.getForEntity(
@@ -29,18 +28,6 @@ public class DefaultCountryInfoApiClient implements CountryInfoApiClient{
             CountryApiDTO[].class);
 
     return new ArrayList<>(Arrays.asList(Objects.requireNonNull(response.getBody())));
-  }
-
-  @Override
-  public String getCountriesInRegion(String region) {
-    String url = BASE_URL + "/api/regions/" + region + "/countries";
-    return restTemplate.getForObject(url, String.class);
-  }
-
-  @Override
-  public String getCountriesWhereLanguageIsSpoken(String language) {
-    String url = BASE_URL + "/api/regions/" + language + "/countries";
-    return restTemplate.getForObject(url, String.class);
   }
 
 }
