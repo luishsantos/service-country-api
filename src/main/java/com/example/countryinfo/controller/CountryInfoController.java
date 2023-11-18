@@ -1,18 +1,24 @@
 package com.example.countryinfo.controller;
 
-import java.util.concurrent.atomic.AtomicLong;
-
-import org.springframework.web.bind.annotation.RequestParam;
+import com.example.countryinfo.dto.CountryDTO;
+import com.example.countryinfo.service.CountryInfoService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping(value = "/countries")
 public class CountryInfoController {
 
-  private static final String template = "Hello, %s!";
-  private final AtomicLong counter = new AtomicLong();
+  private final CountryInfoService countryInfoService;
 
-
-  public String getCountryInfo(@RequestParam(value = "name") String name) {
-    return "hello";
+  @GetMapping(value = "/{name}")
+  public ResponseEntity<CountryDTO> getCountryByName(@PathVariable String name) {
+    return ResponseEntity.ok(countryInfoService.getCountryByName(name));
   }
+
 }
