@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: lhsantos
+      changes:
+        - createTable:
+            tableName: countries
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_country
+              - column:
+                  name: name
+                  type: TEXT
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: capital
+                  type: TEXT
+              - column:
+                  name: officialLanguage
+                  type: TEXT
+              - column:
+                  name: currency
+                  type: TEXT
+              - column:
+                  name: population
+                  type: INT
+              - column:
+                  name: latitude
+                  type: REAL
+              - column:
+                  name: longitude
+                  type: REAL
