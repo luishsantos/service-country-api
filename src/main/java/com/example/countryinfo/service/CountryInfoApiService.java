@@ -7,10 +7,10 @@ import com.example.countryinfo.client.CountryInfoApiClient;
 import com.example.countryinfo.dto.CountryApiDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 @Service
 @RequiredArgsConstructor
 public class CountryInfoApiService {
-
 
   private final CountryInfoApiClient countryInfoApiClient;
 

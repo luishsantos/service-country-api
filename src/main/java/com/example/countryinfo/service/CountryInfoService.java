@@ -17,24 +17,24 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CountryInfoService {
   private final CountryInfoApiService countryInfoApiService;
+
   private final CountryRepository countryRepository;
 
   private final CountryMapper mapper = Mappers.getMapper(CountryMapper.class);
-  public void saveAllCountries(){
+
+  public void saveAllCountries() {
     CountryParser parser = Mappers.getMapper(CountryParser.class);
     List<CountryApiDTO> countryApiDTOList = new ArrayList<>(countryInfoApiService.getAllCountries());
 
-    List<CountryDTO> countryDTOList =  parser.toCountryDTOList(countryApiDTOList);
+    List<CountryDTO> countryDTOList = parser.toCountryDTOList(countryApiDTOList);
 
     List<CountryEntity> countryEntityList = mapper.toCountryEntityList(countryDTOList);
 
     countryRepository.saveAll(countryEntityList);
   }
 
-  public CountryDTO getCountryByName(String name){
+  public CountryDTO getCountryByName(String name) {
     return mapper.toCountryDTO(countryRepository.findByName(name));
   }
-
-
 
 }

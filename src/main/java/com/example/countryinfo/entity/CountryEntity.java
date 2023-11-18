@@ -23,12 +23,19 @@ public class CountryEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   Long id;
+
   String name;
+
   String capital;
+
   String officialLanguage;
+
   String currency;
+
   int population;
+
   double latitude;
+
   double longitude;
 
 }

@@ -11,10 +11,17 @@ import lombok.extern.jackson.Jacksonized;
 @Builder(toBuilder = true)
 public class CountryDTO {
   String name;
+
   String language;
+
   String capital;
+
   String currency;
+
   double latitude;
+
   double longitude;
+
   int population;
+
 }

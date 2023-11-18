@@ -10,15 +10,15 @@ import org.springframework.context.event.EventListener;
 @SpringBootApplication
 @RequiredArgsConstructor
 public class CountryInfoApplication {
-	private final CountryInfoService countryInfoService;
+  private final CountryInfoService countryInfoService;
 
-	public static void main(String[] args) {
-		SpringApplication.run(CountryInfoApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(CountryInfoApplication.class, args);
+  }
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void startUp() {
-		countryInfoService.saveAllCountries();
-	}
+  @EventListener(ApplicationReadyEvent.class)
+  public void startUp() {
+    countryInfoService.saveAllCountries();
+  }
 
 }

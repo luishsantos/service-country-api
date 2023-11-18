@@ -7,4 +7,5 @@ import com.example.countryinfo.dto.CountryApiDTO;
 public interface CountryInfoApiClient {
 
   List<CountryApiDTO> getAllCountries();
+
 }

@@ -9,12 +9,13 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface CountryMapper {
-  @Mapping(target="officialLanguage",source ="language")
+  @Mapping(target = "officialLanguage", source = "language")
   @Mapping(target = "id", ignore = true)
   CountryEntity toCountryEntity(CountryDTO countryDTO);
 
-  @Mapping(target="language",source ="officialLanguage")
+  @Mapping(target = "language", source = "officialLanguage")
   CountryDTO toCountryDTO(CountryEntity countryEntity);
 
   List<CountryEntity> toCountryEntityList(List<CountryDTO> countryEntityList);
+
 }

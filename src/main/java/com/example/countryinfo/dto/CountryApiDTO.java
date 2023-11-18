@@ -16,12 +16,18 @@ import lombok.extern.jackson.Jacksonized;
 public class CountryApiDTO {
 
   String name;
+
   @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
   Object currencies;
+
   List<String> capital;
+
   Map<String, String> languages;
+
   List<Double> latlng;
+
   int population;
+
 }
 
 

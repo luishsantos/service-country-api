@@ -1,12 +1,12 @@
 package com.example.countryinfo.parser;
 
+import java.util.List;
+import java.util.Map;
+
 import com.example.countryinfo.dto.CountryApiDTO;
 import com.example.countryinfo.dto.CountryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface CountryParser {

@@ -26,11 +26,11 @@ class CountryInfoApiServiceTest {
   private static List<CountryApiDTO> countryApiDTOList;
 
   @BeforeAll
-  public static void setup(){
+  public static void setup() {
     CountryApiDTO countryApiDTO = CountryApiDTO.builder()
         .name("countryName")
         .capital(Collections.singletonList("countryCapital"))
-        .languages(Collections.singletonMap("por","officalLanguage"))
+        .languages(Collections.singletonMap("por", "officalLanguage"))
         .currencies(Collections.singletonMap("EUR", Collections.singletonMap("name", "Euro")))
         .population(1)
         .latlng(List.of(2.0, 2.0))

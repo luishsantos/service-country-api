@@ -1,15 +1,12 @@
 package com.example.countryinfo.parser;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import com.example.countryinfo.dto.CountryApiDTO;
 import com.example.countryinfo.dto.CountryDTO;
-import com.example.countryinfo.entity.CountryEntity;
-import com.example.countryinfo.mapper.CountryMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -17,10 +14,12 @@ import org.mapstruct.factory.Mappers;
 class CountryParserTest {
 
   private static CountryParser countryParser;
-  private static CountryApiDTO countryApiDTO;
-  private static CountryDTO countryDTO;
-  private static List<CountryApiDTO> countryApiDTOList;
 
+  private static CountryApiDTO countryApiDTO;
+
+  private static CountryDTO countryDTO;
+
+  private static List<CountryApiDTO> countryApiDTOList;
 
   @BeforeAll
   public static void setUp() {
@@ -29,10 +28,10 @@ class CountryParserTest {
     countryApiDTO = CountryApiDTO.builder()
         .name("countryName")
         .capital(Collections.singletonList("countryCapital"))
-        .languages(Collections.singletonMap("por","officalLanguage"))
+        .languages(Collections.singletonMap("por", "officalLanguage"))
         .currencies(Collections.singletonMap("EUR", Collections.singletonMap("name", "Euro")))
         .population(1)
-        .latlng(List.of(2.0,2.0))
+        .latlng(List.of(2.0, 2.0))
         .build();
 
     countryDTO = CountryDTO.builder()
@@ -55,12 +54,11 @@ class CountryParserTest {
     assertEquals(countryDTO.getName(), actualCountryDTO.getName());
     assertEquals(countryDTO.getCapital(), actualCountryDTO.getCapital());
     assertEquals(countryDTO.getLanguage(), actualCountryDTO.getLanguage());
-    assertEquals(countryDTO.getCurrency(),actualCountryDTO.getCurrency());
+    assertEquals(countryDTO.getCurrency(), actualCountryDTO.getCurrency());
     assertEquals(countryDTO.getLatitude(), actualCountryDTO.getLatitude());
     assertEquals(countryDTO.getLongitude(), actualCountryDTO.getLongitude());
     assertEquals(countryDTO.getPopulation(), actualCountryDTO.getPopulation());
   }
-
 
   @Test
   void toCountryDTOList() {
@@ -69,7 +67,7 @@ class CountryParserTest {
     assertEquals(countryDTO.getName(), actualCountryDTOList.get(0).getName());
     assertEquals(countryDTO.getCapital(), actualCountryDTOList.get(0).getCapital());
     assertEquals(countryDTO.getLanguage(), actualCountryDTOList.get(0).getLanguage());
-    assertEquals(countryDTO.getCurrency(),actualCountryDTOList.get(0).getCurrency());
+    assertEquals(countryDTO.getCurrency(), actualCountryDTOList.get(0).getCurrency());
     assertEquals(countryDTO.getLatitude(), actualCountryDTOList.get(0).getLatitude());
     assertEquals(countryDTO.getLongitude(), actualCountryDTOList.get(0).getLongitude());
     assertEquals(countryDTO.getPopulation(), actualCountryDTOList.get(0).getPopulation());

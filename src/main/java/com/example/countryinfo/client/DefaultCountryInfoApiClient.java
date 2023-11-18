@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 @RequiredArgsConstructor
-public class DefaultCountryInfoApiClient implements CountryInfoApiClient{
+public class DefaultCountryInfoApiClient implements CountryInfoApiClient {
   private static final String BASE_URL = "https://countryinfoapi.com"; // API base URL
 
   private final RestTemplate restTemplate;
