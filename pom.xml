@@ -11,6 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>country-info</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>country-info</name>
 	<description>Country Info API</description>
 	<properties>
