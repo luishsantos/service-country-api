@@ -11,8 +11,6 @@ try {
    			currentStage = 'Setup'
 
             envSetup()
-            
-         	
         }
     }
     stage("Build") {
